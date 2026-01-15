@@ -5,26 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TCM English | Train Context Meaning</title>
   <meta name="description" content="TCM English is a premium English training system built around listening, script, and shadowing—designed for calm, steady progress." />
-  <meta name="theme-color" content="#0D1117" />
+  <meta name="theme-color" content="#071321" />
 
-  <!-- Google Fonts: 1st choice -->
+  <!-- Google Fonts: Playfair Display + Source Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Brand palette (premium midnight) */
-      --bg: #0D1117;         /* deep midnight */
-      --bg2:#141B24;         /* secondary dark */
-      --cream:#F8F7F4;       /* light cream */
-      --card:#111722;        /* card on dark */
-      --text:#E6EDF3;        /* main text on dark */
-      --muted:#9BA7B4;       /* sub text */
-      --gold:#CFAE70;        /* accent */
-      --navy:#102033;        /* deep navy accent */
-      --line: rgba(230,237,243,0.12);
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      /* Brand palette (Blue + Gold) */
+      --deep:#071321;     /* deep blue */
+      --mid:#0B2A4A;      /* mid blue */
+      --sky:#68B7FF;      /* sky blue accent for gradient */
+      --text:#EAF2FB;
+      --muted:rgba(234,242,251,0.72);
+      --gold:#CFAE70;
+      --line: rgba(234,242,251,0.14);
+      --shadow: 0 14px 40px rgba(0,0,0,0.35);
       --radius: 18px;
       --max: 1120px;
     }
@@ -34,53 +32,49 @@
     body{
       margin:0;
       font-family:"Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(207,174,112,0.10), transparent 55%),
-                  radial-gradient(1000px 600px at 80% 10%, rgba(127,183,255,0.08), transparent 55%),
-                  linear-gradient(180deg, var(--bg), #070A0E);
       color:var(--text);
       line-height:1.6;
+
+      /* Deep Blue ↔ Sky Blue gradient */
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(104,183,255,0.22), transparent 60%),
+        radial-gradient(900px 520px at 82% 10%, rgba(207,174,112,0.14), transparent 62%),
+        linear-gradient(135deg, var(--deep) 0%, var(--mid) 45%, rgba(104,183,255,0.18) 100%),
+        linear-gradient(180deg, #050B12 0%, #04070C 100%);
+      background-attachment: fixed;
     }
 
     a{ color:inherit; text-decoration:none; }
     .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
 
-    /* Top nav */
+    /* Header */
     header{
-      position:sticky;
-      top:0;
-      z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(13,17,23,0.55);
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(12px);
+      background: rgba(7,19,33,0.58);
       border-bottom: 1px solid var(--line);
     }
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:14px 0;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
     }
+
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 220px;
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
     }
-    .logoMark{
-      width:34px; height:34px;
-      border-radius:10px;
-      background: linear-gradient(135deg, rgba(207,174,112,0.95), rgba(230,237,243,0.18));
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      display:grid; place-items:center;
-      color:#0D1117;
-      font-weight:800;
-      letter-spacing:0.5px;
+
+    /* 🔥 Logo image (replaces TCM box) */
+    .logoImg{
+      width:38px; height:38px;
+      border-radius:12px;
+      object-fit:cover;
+      border:1px solid rgba(207,174,112,0.35);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.30);
+      background: rgba(234,242,251,0.06);
     }
-    .brandText{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
+
+    .brandText{ display:flex; flex-direction:column; gap:2px; }
     .brandTitle{
       font-family:"Playfair Display", serif;
       font-weight:700;
@@ -89,38 +83,27 @@
       line-height:1.1;
     }
     .brandSub{
-      color:var(--muted);
+      color: rgba(234,242,251,0.68);
       font-size:12.5px;
       letter-spacing:0.6px;
       text-transform:uppercase;
     }
 
     .navLinks{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      color: rgba(230,237,243,0.92);
+      display:flex; gap:18px; align-items:center;
+      color: rgba(234,242,251,0.92);
       font-size:14px;
     }
-    .navLinks a{
-      opacity:0.85;
-      transition:opacity .15s ease;
-    }
+    .navLinks a{ opacity:0.86; transition:opacity .15s ease; }
     .navLinks a:hover{ opacity:1; }
 
-    .cta{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
+    .cta{ display:flex; gap:10px; align-items:center; }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+      display:inline-flex; align-items:center; justify-content:center;
       padding:10px 14px;
       border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(230,237,243,0.04);
+      background: rgba(234,242,251,0.06);
       color:var(--text);
       font-weight:600;
       font-size:14px;
@@ -129,21 +112,19 @@
     }
     .btn:hover{
       transform: translateY(-1px);
-      background: rgba(230,237,243,0.06);
-      border-color: rgba(230,237,243,0.18);
+      background: rgba(234,242,251,0.08);
+      border-color: rgba(234,242,251,0.22);
     }
     .btn.primary{
-      border-color: rgba(207,174,112,0.45);
-      background: linear-gradient(135deg, rgba(207,174,112,0.22), rgba(230,237,243,0.04));
+      border-color: rgba(207,174,112,0.55);
+      background: linear-gradient(135deg, rgba(207,174,112,0.22), rgba(104,183,255,0.10));
     }
 
     /* Hero */
-    .hero{
-      padding:64px 0 28px;
-    }
+    .hero{ padding:64px 0 28px; }
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap:26px;
       align-items:stretch;
     }
@@ -154,35 +135,29 @@
       margin: 0 0 12px;
       letter-spacing:0.2px;
     }
-    .headline span{
-      color: var(--gold);
-    }
+    .headline span{ color: var(--gold); }
     .lead{
       margin: 0 0 20px;
-      color: rgba(230,237,243,0.88);
+      color: rgba(234,242,251,0.88);
       font-size: 18px;
       max-width: 62ch;
     }
-    .heroBadges{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin: 0 0 22px;
-    }
+
+    .heroBadges{ display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 22px; }
     .badge{
       border:1px solid var(--line);
-      background: rgba(230,237,243,0.04);
+      background: rgba(7,19,33,0.28);
       border-radius:999px;
       padding:8px 12px;
       font-size:13px;
-      color: rgba(230,237,243,0.92);
+      color: rgba(234,242,251,0.92);
     }
-    .badge strong{ color: var(--gold); font-weight:700; }
+    .badge strong{ color: var(--gold); font-weight:800; }
 
     .panel{
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(230,237,243,0.04), rgba(230,237,243,0.02));
+      background: linear-gradient(180deg, rgba(234,242,251,0.08), rgba(234,242,251,0.04));
       box-shadow: var(--shadow);
       overflow:hidden;
     }
@@ -193,48 +168,29 @@
       margin:0 0 10px;
       font-size:18px;
     }
-    .panelText{
-      margin:0 0 14px;
-      color: rgba(230,237,243,0.80);
-      font-size:14px;
-    }
+    .panelText{ margin:0 0 14px; color: rgba(234,242,251,0.78); font-size:14px; }
 
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      margin-top: 10px;
-    }
+    .steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:10px; }
     .step{
       border:1px solid var(--line);
-      background: rgba(13,17,23,0.35);
+      background: rgba(7,19,33,0.32);
       border-radius: 14px;
       padding: 12px;
     }
     .stepNum{
       font-size:12px;
-      color: rgba(230,237,243,0.70);
+      color: rgba(234,242,251,0.68);
       text-transform:uppercase;
       letter-spacing:0.9px;
     }
-    .stepName{
-      font-weight:700;
-      margin:4px 0 4px;
-    }
-    .stepDesc{
-      margin:0;
-      color: rgba(230,237,243,0.78);
-      font-size:13px;
-    }
+    .stepName{ font-weight:800; margin:4px 0 4px; }
+    .stepDesc{ margin:0; color: rgba(234,242,251,0.78); font-size:13px; }
 
     /* Sections */
     section{ padding: 34px 0; }
     .sectionHead{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:16px;
-      margin-bottom:14px;
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap:16px; margin-bottom:14px;
     }
     .h2{
       font-family:"Playfair Display", serif;
@@ -244,76 +200,51 @@
     }
     .sub{
       margin:0;
-      color: var(--muted);
+      color: rgba(234,242,251,0.68);
       max-width:70ch;
       font-size:14.5px;
     }
 
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
+    .cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
     .card{
       border:1px solid var(--line);
-      background: rgba(230,237,243,0.03);
+      background: rgba(7,19,33,0.26);
       border-radius: var(--radius);
       padding: 16px;
       box-shadow: 0 10px 26px rgba(0,0,0,0.22);
     }
-    .cardTitle{
-      font-weight:800;
-      margin:0 0 6px;
-      letter-spacing:0.2px;
-    }
-    .cardText{
-      margin:0;
-      color: rgba(230,237,243,0.78);
-      font-size:14px;
-    }
+    .cardTitle{ font-weight:900; margin:0 0 6px; letter-spacing:0.2px; }
+    .cardText{ margin:0; color: rgba(234,242,251,0.78); font-size:14px; }
 
-    .split{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-
+    .split{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
     .callout{
-      border:1px solid rgba(207,174,112,0.35);
-      background: radial-gradient(900px 300px at 20% 0%, rgba(207,174,112,0.14), transparent 55%),
-                  rgba(230,237,243,0.03);
+      border:1px solid rgba(207,174,112,0.38);
+      background:
+        radial-gradient(820px 280px at 16% 0%, rgba(207,174,112,0.18), transparent 60%),
+        rgba(7,19,33,0.22);
       border-radius: var(--radius);
       padding: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
     }
     .callout h3{
       font-family:"Playfair Display", serif;
       margin:0 0 8px;
       font-size:20px;
     }
-    .callout p{
-      margin:0;
-      color: rgba(230,237,243,0.82);
-      font-size:14.5px;
-    }
+    .callout p{ margin:0; color: rgba(234,242,251,0.82); font-size:14.5px; }
 
     /* Footer */
     footer{
       border-top:1px solid var(--line);
       padding: 22px 0 40px;
-      color: rgba(230,237,243,0.72);
+      color: rgba(234,242,251,0.68);
       font-size:13px;
     }
     .footGrid{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      align-items:center;
+      display:flex; justify-content:space-between; gap:16px;
+      flex-wrap:wrap; align-items:center;
     }
-    .tinyLinks{
-      display:flex; gap:14px; flex-wrap:wrap;
-      opacity:0.9;
-    }
+    .tinyLinks{ display:flex; gap:14px; flex-wrap:wrap; opacity:0.9; }
 
     /* Responsive */
     @media (max-width: 920px){
@@ -332,7 +263,8 @@
     <div class="wrap">
       <div class="nav">
         <a class="brand" href="#top" aria-label="TCM English Home">
-          <div class="logoMark">TCM</div>
+          <!-- ✅ Put your logo file next to index.html as: logo.png -->
+          <img class="logoImg" src="logo.png" alt="TCM English logo" />
           <div class="brandText">
             <div class="brandTitle">TCM English</div>
             <div class="brandSub">Train • Context • Meaning</div>
@@ -346,8 +278,8 @@
         </nav>
 
         <div class="cta">
-          <!-- Replace with your channel link -->
-          <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noreferrer">Visit YouTube</a>
+          <!-- ✅ Your real channel link -->
+          <a class="btn primary" href="https://www.youtube.com/@tcm-english" target="_blank" rel="noreferrer">Visit YouTube</a>
         </div>
       </div>
     </div>
@@ -480,7 +412,7 @@
 
         <div class="card">
           <p class="cardText" style="margin:0;">
-            <strong style="color:var(--gold); font-weight:800;">TCM</strong> stands for
+            <strong style="color:var(--gold); font-weight:900;">TCM</strong> stands for
             <strong>Train</strong>, <strong>Context</strong>, and <strong>Meaning</strong>.
             The goal is simple: build a daily routine that trains your ear first, anchors meaning, and then upgrades your speaking through shadowing.
           </p>
@@ -491,13 +423,12 @@
         <div class="sectionHead">
           <div>
             <h2 class="h2">Next</h2>
-            <p class="sub">If you want, we can add: playlist grid, episode cards, and an email capture — still minimal.</p>
+            <p class="sub">We can add playlist cards, episode grid, and email capture — still minimal.</p>
           </div>
         </div>
 
         <div class="cta">
-          <!-- Replace with real links later -->
-          <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noreferrer">Watch the latest</a>
+          <a class="btn primary" href="https://www.youtube.com/@tcm-english" target="_blank" rel="noreferrer">Watch on YouTube</a>
           <a class="btn" href="#top">Back to top</a>
         </div>
       </section>
@@ -508,16 +439,17 @@
     <div class="wrap">
       <div class="footGrid">
         <div>
-          <span style="font-family:'Playfair Display',serif; font-weight:700; color:rgba(230,237,243,0.92);">TCM English</span>
-          <span style="color:rgba(230,237,243,0.55);"> • Train Context Meaning</span>
+          <span style="font-family:'Playfair Display',serif; font-weight:700; color:rgba(234,242,251,0.92);">TCM English</span>
+          <span style="color:rgba(234,242,251,0.55);"> • Train Context Meaning</span>
         </div>
         <div class="tinyLinks">
           <a href="#method">Method</a>
           <a href="#format">Format</a>
           <a href="#about">About</a>
+          <a href="https://www.youtube.com/@tcm-english" target="_blank" rel="noreferrer">YouTube</a>
         </div>
       </div>
-      <div style="margin-top:10px; color:rgba(230,237,243,0.45);">
+      <div style="margin-top:10px; color:rgba(234,242,251,0.45);">
         © <span id="y"></span> TCM English. All rights reserved.
       </div>
     </div>
@@ -528,4 +460,3 @@
   </script>
 </body>
 </html>
-
