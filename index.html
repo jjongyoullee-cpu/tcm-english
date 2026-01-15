@@ -7,10 +7,10 @@
   <meta name="description" content="TCM English is a premium English training system built around listening, script, and shadowing—designed for calm, steady progress." />
   <meta name="theme-color" content="#071321" />
 
-  <!-- Google Fonts: Playfair Display + Source Sans -->
+  <!-- Google Fonts: Merriweather + Nunito -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -25,15 +25,22 @@
       --shadow: 0 14px 40px rgba(0,0,0,0.35);
       --radius: 18px;
       --max: 1120px;
+
+      /* Typography scale (bump overall size except brand area) */
+      --base: 17px;      /* was ~16px */
+      --small: 14.5px;   /* small UI text */
+      --tiny: 12.5px;    /* keep brand sub size */
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
-      font-family:"Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: var(--base);
       color:var(--text);
-      line-height:1.6;
+      line-height:1.7;
 
       /* Deep Blue ↔ Sky Blue gradient */
       background:
@@ -64,27 +71,34 @@
       min-width: 240px;
     }
 
-    /* 🔥 Logo image (replaces TCM box) */
-    .logoImg{
-      width:38px; height:38px;
-      border-radius:12px;
-      object-fit:cover;
-      border:1px solid rgba(207,174,112,0.35);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.30);
+    /* ✅ Text-only logo mark (no image) */
+    .logoMark{
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(207,174,112,0.45);
       background: rgba(234,242,251,0.06);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.30);
+      display:grid; place-items:center;
+      font-family:"Merriweather", serif;
+      font-weight:900;
+      font-size:16px;
+      letter-spacing:0.5px;
+      color: var(--gold);
     }
 
     .brandText{ display:flex; flex-direction:column; gap:2px; }
+
+    /* (1) 첨부된 부분 폰트 크기 유지 + (3) 로고 텍스트만 더 크게 */
     .brandTitle{
-      font-family:"Playfair Display", serif;
-      font-weight:700;
-      font-size:18px;
+      font-family:"Merriweather", serif;
+      font-weight:900;
+      font-size:22px; /* ⬅️ 로고 텍스트만 키움 (기존 18 근처보다 큼) */
       letter-spacing:0.2px;
       line-height:1.1;
     }
     .brandSub{
       color: rgba(234,242,251,0.68);
-      font-size:12.5px;
+      font-size: var(--tiny); /* ✅ 첨부된 부분(서브) 크기 유지 */
       letter-spacing:0.6px;
       text-transform:uppercase;
     }
@@ -92,7 +106,7 @@
     .navLinks{
       display:flex; gap:18px; align-items:center;
       color: rgba(234,242,251,0.92);
-      font-size:14px;
+      font-size: var(--small);
     }
     .navLinks a{ opacity:0.86; transition:opacity .15s ease; }
     .navLinks a:hover{ opacity:1; }
@@ -105,8 +119,8 @@
       border:1px solid var(--line);
       background: rgba(234,242,251,0.06);
       color:var(--text);
-      font-weight:600;
-      font-size:14px;
+      font-weight:700;
+      font-size: var(--small);
       transition: transform .15s ease, background .15s ease, border .15s ease;
       white-space:nowrap;
     }
@@ -129,17 +143,18 @@
       align-items:stretch;
     }
     .headline{
-      font-family:"Playfair Display", serif;
-      font-size: clamp(34px, 4vw, 54px);
-      line-height:1.05;
+      font-family:"Merriweather", serif;
+      font-weight:900;
+      font-size: clamp(36px, 4.2vw, 56px); /* slightly bigger */
+      line-height:1.08;
       margin: 0 0 12px;
-      letter-spacing:0.2px;
+      letter-spacing:0.1px;
     }
     .headline span{ color: var(--gold); }
     .lead{
       margin: 0 0 20px;
       color: rgba(234,242,251,0.88);
-      font-size: 18px;
+      font-size: 19px; /* (2) bump */
       max-width: 62ch;
     }
 
@@ -148,11 +163,11 @@
       border:1px solid var(--line);
       background: rgba(7,19,33,0.28);
       border-radius:999px;
-      padding:8px 12px;
-      font-size:13px;
+      padding:9px 12px; /* slightly bigger */
+      font-size: 14.5px; /* (2) bump */
       color: rgba(234,242,251,0.92);
     }
-    .badge strong{ color: var(--gold); font-weight:800; }
+    .badge strong{ color: var(--gold); font-weight:900; }
 
     .panel{
       border: 1px solid var(--line);
@@ -163,28 +178,28 @@
     }
     .panelInner{ padding:18px 18px 16px; }
     .panelTitle{
-      font-family:"Playfair Display", serif;
-      font-weight:700;
+      font-family:"Merriweather", serif;
+      font-weight:900;
       margin:0 0 10px;
-      font-size:18px;
+      font-size:19px; /* bump */
     }
-    .panelText{ margin:0 0 14px; color: rgba(234,242,251,0.78); font-size:14px; }
+    .panelText{ margin:0 0 14px; color: rgba(234,242,251,0.78); font-size: 15.5px; }
 
     .steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:10px; }
     .step{
       border:1px solid var(--line);
       background: rgba(7,19,33,0.32);
       border-radius: 14px;
-      padding: 12px;
+      padding: 13px; /* bump */
     }
     .stepNum{
-      font-size:12px;
+      font-size: 12.5px;
       color: rgba(234,242,251,0.68);
       text-transform:uppercase;
       letter-spacing:0.9px;
     }
-    .stepName{ font-weight:800; margin:4px 0 4px; }
-    .stepDesc{ margin:0; color: rgba(234,242,251,0.78); font-size:13px; }
+    .stepName{ font-weight:900; margin:4px 0 4px; font-size: 15.5px; }
+    .stepDesc{ margin:0; color: rgba(234,242,251,0.78); font-size: 14.5px; }
 
     /* Sections */
     section{ padding: 34px 0; }
@@ -193,16 +208,17 @@
       gap:16px; margin-bottom:14px;
     }
     .h2{
-      font-family:"Playfair Display", serif;
-      font-size: 26px;
+      font-family:"Merriweather", serif;
+      font-weight:900;
+      font-size: 28px; /* bump */
       margin:0;
-      letter-spacing:0.2px;
+      letter-spacing:0.1px;
     }
     .sub{
       margin:0;
       color: rgba(234,242,251,0.68);
       max-width:70ch;
-      font-size:14.5px;
+      font-size: 16px; /* bump */
     }
 
     .cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
@@ -210,11 +226,20 @@
       border:1px solid var(--line);
       background: rgba(7,19,33,0.26);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 18px; /* bump */
       box-shadow: 0 10px 26px rgba(0,0,0,0.22);
     }
-    .cardTitle{ font-weight:900; margin:0 0 6px; letter-spacing:0.2px; }
-    .cardText{ margin:0; color: rgba(234,242,251,0.78); font-size:14px; }
+    .cardTitle{
+      font-weight:900;
+      margin:0 0 6px;
+      letter-spacing:0.1px;
+      font-size: 18px; /* bump */
+    }
+    .cardText{
+      margin:0;
+      color: rgba(234,242,251,0.78);
+      font-size: 15.5px; /* bump */
+    }
 
     .split{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
     .callout{
@@ -227,18 +252,19 @@
       box-shadow: 0 10px 26px rgba(0,0,0,0.18);
     }
     .callout h3{
-      font-family:"Playfair Display", serif;
+      font-family:"Merriweather", serif;
+      font-weight:900;
       margin:0 0 8px;
-      font-size:20px;
+      font-size:21px; /* bump */
     }
-    .callout p{ margin:0; color: rgba(234,242,251,0.82); font-size:14.5px; }
+    .callout p{ margin:0; color: rgba(234,242,251,0.82); font-size: 15.5px; }
 
     /* Footer */
     footer{
       border-top:1px solid var(--line);
       padding: 22px 0 40px;
       color: rgba(234,242,251,0.68);
-      font-size:13px;
+      font-size: 14.5px; /* bump */
     }
     .footGrid{
       display:flex; justify-content:space-between; gap:16px;
@@ -263,8 +289,8 @@
     <div class="wrap">
       <div class="nav">
         <a class="brand" href="#top" aria-label="TCM English Home">
-          <!-- ✅ Put your logo file next to index.html as: logo.png -->
-          <img class="logoImg" src="logo.png" alt="TCM English logo" />
+          <!-- ✅ No logo image. Text-only mark -->
+          <div class="logoMark">TCM</div>
           <div class="brandText">
             <div class="brandTitle">TCM English</div>
             <div class="brandSub">Train • Context • Meaning</div>
@@ -278,7 +304,6 @@
         </nav>
 
         <div class="cta">
-          <!-- ✅ Your real channel link -->
           <a class="btn primary" href="https://www.youtube.com/@tcm-english" target="_blank" rel="noreferrer">Visit YouTube</a>
         </div>
       </div>
@@ -339,7 +364,7 @@
 
               <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
                 <p class="panelText" style="margin:0;">
-                  <strong style="color:var(--gold);">Best for:</strong> learners who can read & write,
+                  <strong style="color:var(--gold); font-weight:900;">Best for:</strong> learners who can read & write,
                   but want stronger listening and speaking.
                 </p>
               </div>
@@ -388,7 +413,7 @@
           <div class="callout">
             <h3>Intro (2–3 seconds)</h3>
             <p>
-              A short, recognizable signal sound + logo. No long music. Premium minimal.
+              A short, recognizable signal sound + logo mark. No long music. Premium minimal.
             </p>
           </div>
           <div class="callout">
@@ -439,7 +464,7 @@
     <div class="wrap">
       <div class="footGrid">
         <div>
-          <span style="font-family:'Playfair Display',serif; font-weight:700; color:rgba(234,242,251,0.92);">TCM English</span>
+          <span style="font-family:'Merriweather',serif; font-weight:900; color:rgba(234,242,251,0.92);">TCM English</span>
           <span style="color:rgba(234,242,251,0.55);"> • Train Context Meaning</span>
         </div>
         <div class="tinyLinks">
