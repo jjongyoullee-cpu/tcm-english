@@ -1,294 +1,531 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TCM English | Train Context Meaning</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="TCM English is a premium English training system built around listening, script, and shadowing—designed for calm, steady progress." />
+  <meta name="theme-color" content="#0D1117" />
+
+  <!-- Google Fonts: 1st choice -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --sky-blue:#8ec5ff;      /* blue sky tone */
-      --sky-blue-soft:#cfe6ff; 
-      --ink:#0f172a;
-      --sub:#475569;
-      --card:rgba(255,255,255,0.88);
-      --tcm-t:#d4a300;   /* stronger gold */
-      --tcm-c:#2563eb;   /* stronger blue */
-      --tcm-m:#5b3fd6;   /* stronger purple */
+      /* Brand palette (premium midnight) */
+      --bg: #0D1117;         /* deep midnight */
+      --bg2:#141B24;         /* secondary dark */
+      --cream:#F8F7F4;       /* light cream */
+      --card:#111722;        /* card on dark */
+      --text:#E6EDF3;        /* main text on dark */
+      --muted:#9BA7B4;       /* sub text */
+      --gold:#CFAE70;        /* accent */
+      --navy:#102033;        /* deep navy accent */
+      --line: rgba(230,237,243,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --max: 1120px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;}
-
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
-      color:var(--ink);
-      background:linear-gradient(180deg,var(--sky-blue) 0%, var(--sky-blue-soft) 60%, #ffffff 100%);
-      min-height:100vh;
+      margin:0;
+      font-family:"Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(207,174,112,0.10), transparent 55%),
+                  radial-gradient(1000px 600px at 80% 10%, rgba(127,183,255,0.08), transparent 55%),
+                  linear-gradient(180deg, var(--bg), #070A0E);
+      color:var(--text);
       line-height:1.6;
     }
 
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    /* Top nav */
     header{
-      max-width:1100px;
-      margin:0 auto;
-      padding:48px 24px 24px;
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(13,17,23,0.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      align-items:center;
+      gap:14px;
+      padding:14px 0;
     }
-
-    .logo{
-      font-weight:900;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .logoMark{
+      width:34px; height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, rgba(207,174,112,0.95), rgba(230,237,243,0.18));
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      display:grid; place-items:center;
+      color:#0D1117;
+      font-weight:800;
+      letter-spacing:0.5px;
+    }
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .brandTitle{
+      font-family:"Playfair Display", serif;
+      font-weight:700;
+      font-size:18px;
+      letter-spacing:0.2px;
+      line-height:1.1;
+    }
+    .brandSub{
+      color:var(--muted);
+      font-size:12.5px;
       letter-spacing:0.6px;
-      font-size:2.1rem;
+      text-transform:uppercase;
     }
 
-    .logo .t{color:var(--tcm-t);}
-    .logo .c{color:var(--tcm-c);}
-    .logo .m{color:var(--tcm-m);}
-    .logo .eng{color:#000000;font-weight:700;}
-
-    .train{color:var(--tcm-t);font-weight:600;}
-    .context{color:var(--tcm-c);font-weight:600;}
-    .meaning{color:var(--tcm-m);font-weight:600;}
-
-    .hero{
-      max-width:1100px;
-      margin:0 auto;
-      padding:40px 24px 80px;
-      display:grid;
-      grid-template-columns:1.2fr 1fr;
-      gap:48px;
+    .navLinks{
+      display:flex;
+      gap:18px;
       align-items:center;
+      color: rgba(230,237,243,0.92);
+      font-size:14px;
     }
-
-    .hero h1{
-      font-size:3rem;
-      line-height:1.15;
-      margin-bottom:16px;
+    .navLinks a{
+      opacity:0.85;
+      transition:opacity .15s ease;
     }
-
-    .hero p{
-      color:var(--sub);
-      font-size:1.05rem;
-      max-width:520px;
-    }
-
-    .tag{
-      display:inline-block;
-      background:rgba(255,255,255,0.7);
-      padding:6px 12px;
-      border-radius:999px;
-      font-size:0.8rem;
-      margin-bottom:16px;
-    }
+    .navLinks a:hover{ opacity:1; }
 
     .cta{
-      margin-top:28px;
       display:flex;
-      gap:16px;
+      gap:10px;
+      align-items:center;
     }
-
     .btn{
-      padding:12px 22px;
-      border-radius:12px;
-      border:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(230,237,243,0.04);
+      color:var(--text);
       font-weight:600;
-      cursor:pointer;
-      background:#0f172a;
-      color:white;
-      text-decoration:none;
-      transition:0.2s;
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(230,237,243,0.06);
+      border-color: rgba(230,237,243,0.18);
+    }
+    .btn.primary{
+      border-color: rgba(207,174,112,0.45);
+      background: linear-gradient(135deg, rgba(207,174,112,0.22), rgba(230,237,243,0.04));
     }
 
-    .btn.secondary{
-      background:transparent;
-      color:#0f172a;
-      border:1px solid #0f172a;
+    /* Hero */
+    .hero{
+      padding:64px 0 28px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .headline{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      margin: 0 0 12px;
+      letter-spacing:0.2px;
+    }
+    .headline span{
+      color: var(--gold);
+    }
+    .lead{
+      margin: 0 0 20px;
+      color: rgba(230,237,243,0.88);
+      font-size: 18px;
+      max-width: 62ch;
+    }
+    .heroBadges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 0 0 22px;
+    }
+    .badge{
+      border:1px solid var(--line);
+      background: rgba(230,237,243,0.04);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      color: rgba(230,237,243,0.92);
+    }
+    .badge strong{ color: var(--gold); font-weight:700; }
+
+    .panel{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(230,237,243,0.04), rgba(230,237,243,0.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panelInner{ padding:18px 18px 16px; }
+    .panelTitle{
+      font-family:"Playfair Display", serif;
+      font-weight:700;
+      margin:0 0 10px;
+      font-size:18px;
+    }
+    .panelText{
+      margin:0 0 14px;
+      color: rgba(230,237,243,0.80);
+      font-size:14px;
     }
 
-    .btn:hover{transform:translateY(-2px);}
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top: 10px;
+    }
+    .step{
+      border:1px solid var(--line);
+      background: rgba(13,17,23,0.35);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .stepNum{
+      font-size:12px;
+      color: rgba(230,237,243,0.70);
+      text-transform:uppercase;
+      letter-spacing:0.9px;
+    }
+    .stepName{
+      font-weight:700;
+      margin:4px 0 4px;
+    }
+    .stepDesc{
+      margin:0;
+      color: rgba(230,237,243,0.78);
+      font-size:13px;
+    }
 
+    /* Sections */
+    section{ padding: 34px 0; }
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    .h2{
+      font-family:"Playfair Display", serif;
+      font-size: 26px;
+      margin:0;
+      letter-spacing:0.2px;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      max-width:70ch;
+      font-size:14.5px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
     .card{
-      background:var(--card);
-      border-radius:20px;
-      padding:28px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      border:1px solid var(--line);
+      background: rgba(230,237,243,0.03);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+    }
+    .cardTitle{
+      font-weight:800;
+      margin:0 0 6px;
+      letter-spacing:0.2px;
+    }
+    .cardText{
+      margin:0;
+      color: rgba(230,237,243,0.78);
+      font-size:14px;
     }
 
-    section{
-      max-width:1100px;
-      margin:0 auto;
-      padding:80px 24px;
-    }
-
-    section h2{
-      font-size:2rem;
-      margin-bottom:16px;
-    }
-
-    section p.lead{
-      color:var(--sub);
-      max-width:720px;
-      margin-bottom:40px;
-    }
-
-    .grid-3{
+    .split{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:24px;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
     }
 
-    .step h3{
-      margin-bottom:8px;
+    .callout{
+      border:1px solid rgba(207,174,112,0.35);
+      background: radial-gradient(900px 300px at 20% 0%, rgba(207,174,112,0.14), transparent 55%),
+                  rgba(230,237,243,0.03);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .callout h3{
+      font-family:"Playfair Display", serif;
+      margin:0 0 8px;
+      font-size:20px;
+    }
+    .callout p{
+      margin:0;
+      color: rgba(230,237,243,0.82);
+      font-size:14.5px;
     }
 
-    .step p{
-      color:var(--sub);
-      font-size:0.95rem;
-    }
-
-    .academic{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:32px;
-      align-items:start;
-    }
-
-    .academic ul{
-      padding-left:18px;
-      color:var(--sub);
-    }
-
-    .academic li{margin-bottom:10px;}
-
+    /* Footer */
     footer{
-      text-align:center;
-      padding:60px 20px;
-      color:#64748b;
-      font-size:0.9rem;
+      border-top:1px solid var(--line);
+      padding: 22px 0 40px;
+      color: rgba(230,237,243,0.72);
+      font-size:13px;
+    }
+    .footGrid{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .tinyLinks{
+      display:flex; gap:14px; flex-wrap:wrap;
+      opacity:0.9;
     }
 
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .grid-3{grid-template-columns:1fr;}
-      .academic{grid-template-columns:1fr;}
-      .hero h1{font-size:2.3rem;}
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .navLinks{ display:none; }
+      .brand{ min-width:auto; }
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="TCM English Home">
+          <div class="logoMark">TCM</div>
+          <div class="brandText">
+            <div class="brandTitle">TCM English</div>
+            <div class="brandSub">Train • Context • Meaning</div>
+          </div>
+        </a>
 
-<header>
-  <div class="logo"><span class="t">t</span><span class="c">c</span><span class="m">m</span> <span class="eng">english</span></div>
-  <div>Train · Context · Meaning</div>
-</header>
+        <nav class="navLinks" aria-label="Primary">
+          <a href="#method">Method</a>
+          <a href="#format">Format</a>
+          <a href="#about">About</a>
+        </nav>
 
-<section class="hero">
-  <div>
-    <div class="tag">Professional English Training System</div>
-    <h1><span class="train">Train</span> <span class="context">Context</span>.<br>Build <span class="meaning">Meaning</span>.<br>Speak Naturally.</h1>
-    <p>
-      TCM English is not a hobby channel.  
-      It is a structured English training system based on language acquisition research.  
-      We train how the brain processes language — not how textbooks explain it.
-    </p>
-    <div class="cta">
-      <a class="btn" href="#">YouTube Channel</a>
-      <a class="btn secondary" href="#philosophy">Our Method</a>
+        <div class="cta">
+          <!-- Replace with your channel link -->
+          <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noreferrer">Visit YouTube</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="card">
-    <h3>What makes TCM English different?</h3>
-    <p style="margin-top:10px;color:var(--sub)">
-      Most English channels teach information.  
-      TCM trains perception, reaction, and meaning-building.
-    </p>
-    <p style="margin-top:16px;color:var(--sub)">
-      This is not memorization.  
-      This is cognitive language training.
-    </p>
-  </div>
-</section>
+  <main id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div class="heroGrid">
+          <div>
+            <h1 class="headline">
+              A calm, premium system for
+              <span>real English</span> listening & speaking.
+            </h1>
+            <p class="lead">
+              TCM English turns long study sessions into a repeatable training routine—
+              minimal visuals, clear structure, and steady progress.
+            </p>
 
-<section id="philosophy">
-  <h2>The <span class="train">T</span><span class="context">C</span><span class="meaning">M</span> Framework</h2>
-  <p class="lead">
-    TCM English is built on how humans actually acquire language — through repeated exposure, contextual inference, and meaning construction.
-  </p>
+            <div class="heroBadges">
+              <div class="badge"><strong>Listen</strong> first</div>
+              <div class="badge"><strong>Understand</strong> with context</div>
+              <div class="badge"><strong>Shadow</strong> to speak naturally</div>
+              <div class="badge">Premium minimal design</div>
+            </div>
 
-  <div class="grid-3">
-    <div class="card step">
-      <h3>1. <span class="train">Train</span></h3>
-      <p>
-        The brain must be trained through repeated input.  
-        We design content that builds neural familiarity before conscious speaking.
-      </p>
+            <div class="cta" style="margin-top:10px;">
+              <a class="btn primary" href="#method">See the method</a>
+              <a class="btn" href="#format">Video format</a>
+            </div>
+          </div>
+
+          <aside class="panel" aria-label="Training steps">
+            <div class="panelInner">
+              <p class="panelTitle">The TCM Flow</p>
+              <p class="panelText">
+                One routine, repeated—so your ears and voice improve naturally over time.
+              </p>
+
+              <div class="steps">
+                <div class="step">
+                  <div class="stepNum">Step 1</div>
+                  <div class="stepName">LISTEN</div>
+                  <p class="stepDesc">Train your ear with clean, steady input.</p>
+                </div>
+                <div class="step">
+                  <div class="stepNum">Step 2</div>
+                  <div class="stepName">SCRIPT</div>
+                  <p class="stepDesc">Lock meaning with a short, readable script.</p>
+                </div>
+                <div class="step">
+                  <div class="stepNum">Step 3</div>
+                  <div class="stepName">SHADOW</div>
+                  <p class="stepDesc">Speak along to build rhythm and confidence.</p>
+                </div>
+              </div>
+
+              <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
+                <p class="panelText" style="margin:0;">
+                  <strong style="color:var(--gold);">Best for:</strong> learners who can read & write,
+                  but want stronger listening and speaking.
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="method">
+        <div class="sectionHead">
+          <div>
+            <h2 class="h2">Method</h2>
+            <p class="sub">
+              This is not “watch and forget.” It’s a guided training loop: input → meaning → output.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="cardTitle">Minimal visuals, maximum focus</div>
+            <p class="cardText">A calm midnight layout reduces fatigue and keeps attention on the sentence.</p>
+          </div>
+          <div class="card">
+            <div class="cardTitle">Context before performance</div>
+            <p class="cardText">Understanding comes first—then shadowing becomes natural, not forced.</p>
+          </div>
+          <div class="card">
+            <div class="cardTitle">Repeatable structure</div>
+            <p class="cardText">Same rhythm every time, so progress stacks over weeks and months.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="format">
+        <div class="sectionHead">
+          <div>
+            <h2 class="h2">Video format</h2>
+            <p class="sub">
+              A simple format that feels premium: a short signal, a clear instruction, then training.
+            </p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="callout">
+            <h3>Intro (2–3 seconds)</h3>
+            <p>
+              A short, recognizable signal sound + logo. No long music. Premium minimal.
+            </p>
+          </div>
+          <div class="callout">
+            <h3>Main session</h3>
+            <p>
+              TRAIN → CONTEXT → SHADOW. Calm background, consistent typography, and voice-led guidance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="sectionHead">
+          <div>
+            <h2 class="h2">About TCM English</h2>
+            <p class="sub">
+              Built for learners who already studied English, but still struggle with real listening and speaking.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="cardText" style="margin:0;">
+            <strong style="color:var(--gold); font-weight:800;">TCM</strong> stands for
+            <strong>Train</strong>, <strong>Context</strong>, and <strong>Meaning</strong>.
+            The goal is simple: build a daily routine that trains your ear first, anchors meaning, and then upgrades your speaking through shadowing.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sectionHead">
+          <div>
+            <h2 class="h2">Next</h2>
+            <p class="sub">If you want, we can add: playlist grid, episode cards, and an email capture — still minimal.</p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <!-- Replace with real links later -->
+          <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noreferrer">Watch the latest</a>
+          <a class="btn" href="#top">Back to top</a>
+        </div>
+      </section>
     </div>
-    <div class="card step">
-      <h3>2. <span class="context">Context</span></h3>
-      <p>
-        Language is not vocabulary — it is situation.  
-        All training content is built around real usage contexts.
-      </p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footGrid">
+        <div>
+          <span style="font-family:'Playfair Display',serif; font-weight:700; color:rgba(230,237,243,0.92);">TCM English</span>
+          <span style="color:rgba(230,237,243,0.55);"> • Train Context Meaning</span>
+        </div>
+        <div class="tinyLinks">
+          <a href="#method">Method</a>
+          <a href="#format">Format</a>
+          <a href="#about">About</a>
+        </div>
+      </div>
+      <div style="margin-top:10px; color:rgba(230,237,243,0.45);">
+        © <span id="y"></span> TCM English. All rights reserved.
+      </div>
     </div>
-    <div class="card step">
-      <h3>3. <span class="meaning">Meaning</span></h3>
-      <p>
-        Meaning is constructed, not translated.  
-        Learners acquire intuitive sense instead of sentence conversion.
-      </p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<section>
-  <h2>Academic Foundations</h2>
-  <p class="lead">
-    TCM English is inspired by established research fields in linguistics, neuroscience, and second language acquisition.
-  </p>
-
-  <div class="academic">
-    <div class="card">
-      <h3>Related Research Areas</h3>
-      <ul>
-        <li>Second Language Acquisition (SLA)</li>
-        <li>Input Hypothesis & Comprehensible Input</li>
-        <li>Usage-Based Linguistics</li>
-        <li>Cognitive Linguistics</li>
-        <li>Neural Plasticity & Habit Formation</li>
-        <li>Contextual Learning Theory</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Our Training Philosophy</h3>
-      <p style="color:var(--sub)">
-        Humans acquire language before grammar.  
-        The brain learns patterns before rules.  
-        Meaning comes before accuracy.
-      </p>
-      <p style="margin-top:14px;color:var(--sub)">
-        TCM English designs its video system based on this order —  
-        training perception first, structure later.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Who TCM English is for</h2>
-  <p class="lead">This system is designed for serious learners, not casual watchers.</p>
-
-  <div class="grid-3">
-    <div class="card"><p>Studied English for years but still can’t speak naturally</p></div>
-    <div class="card"><p>Understand grammar but freeze in real conversations</p></div>
-    <div class="card"><p>Want brain-level English training, not short-term tricks</p></div>
-  </div>
-</section>
-
-<footer>
-  © 2026 TCM English — Train Context Meaning
-</footer>
-
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
